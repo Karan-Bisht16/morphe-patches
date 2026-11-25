@@ -17,7 +17,7 @@ public final class HideMediaViewerComponentsPatch {
      */
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
-        return false;  // Modified during patching.
+        return false; // Modified during patching.
     }
 
     /**
@@ -26,13 +26,14 @@ public final class HideMediaViewerComponentsPatch {
      */
     @SuppressWarnings("SameReturnValue")
     public static boolean isHideOverlayIncluded() {
-        return false;  // Modified during patching.
+        return false; // Modified during patching.
     }
 
     /**
      * Injection point.
      *
-     * @return If the media viewer shows the "See the conversation" button. Newer versions show it
+     * @return If the media viewer shows the "See the conversation" button. Newer
+     *         versions show it
      *         in a dock below the media.
      */
     public static boolean showJoinConversationButton(boolean original) {
@@ -42,7 +43,8 @@ public final class HideMediaViewerComponentsPatch {
     /**
      * Injection point.
      *
-     * @return If a media viewer page skips the status bar padding. Images and videos skip it,
+     * @return If a media viewer page skips the status bar padding. Images and
+     *         videos skip it,
      *         but without the dock they would then be centered too high.
      */
     public static boolean skipStatusBarPadding(boolean original) {
@@ -57,5 +59,29 @@ public final class HideMediaViewerComponentsPatch {
      */
     public static boolean hideOverlay() {
         return Settings.HIDE_MEDIA_VIEWER_OVERLAY.get();
+    }
+
+    /**
+     * Injection point.
+     *
+     * @return True to redirect media viewer repost/share clicks to download/save.
+     */
+    public static boolean isImmersiveModeEnabled() {
+        return Settings.IMMERSIVE_MODE.get();
+    }
+
+    private static volatile boolean currentPostSaved = false;
+
+    public static boolean isCurrentPostSaved() {
+        return currentPostSaved;
+    }
+
+    public static void setCurrentPostSaved(boolean saved) {
+        currentPostSaved = saved;
+    }
+
+    public static boolean shouldHideCounter(String tag) {
+        return Settings.IMMERSIVE_MODE.get()
+                && ("repost_count".equals(tag) || "post_share_count".equals(tag));
     }
 }

@@ -75,30 +75,26 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         if (CopyTextPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.COPY_TEXT
-            ));
+                    Settings.COPY_TEXT));
         }
 
         if (CustomFontPatch.isPatchIncluded()) {
             addPreference(new CustomFontTogglePreference(context));
             addPreference(new CustomFontFilePreference(
                     context,
-                    Settings.CUSTOM_FONT_FILE_PATH
-            ));
+                    Settings.CUSTOM_FONT_FILE_PATH));
         }
 
         if (DisableModernHomePatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.DISABLE_MODERN_HOME
-            ));
+                    Settings.DISABLE_MODERN_HOME));
         }
 
         if (DisableScreenshotPopupPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.DISABLE_SCREENSHOT_POPUP
-            ));
+                    Settings.DISABLE_SCREENSHOT_POPUP));
         }
 
         if (ForceSystemFontPatch.isPatchIncluded()) {
@@ -108,114 +104,100 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         if (HideAskButtonPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_ASK_BUTTON
-            ));
+                    Settings.HIDE_ASK_BUTTON));
         }
 
         if (HideCommunitiesShelfPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_COMMUNITIES_SHELF
-            ));
+                    Settings.HIDE_COMMUNITIES_SHELF));
         }
 
         if (HideTrendingShelvesPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_TRENDING_SHELVES
-            ));
+                    Settings.HIDE_TRENDING_SHELVES));
         }
 
         if (RemoveSubRedditDialogPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.REMOVE_NSFW_DIALOG
-            ));
+                    Settings.REMOVE_NSFW_DIALOG));
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.REMOVE_NOTIFICATION_DIALOG
-            ));
+                    Settings.REMOVE_NOTIFICATION_DIALOG));
         }
 
         if (HighQualityAvatarsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIGH_QUALITY_AVATARS
-            ));
+                    Settings.HIGH_QUALITY_AVATARS));
         }
 
         if (ShowViewCountPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.SHOW_VIEW_COUNT
-            ));
+                    Settings.SHOW_VIEW_COUNT));
         }
 
         if (FullWidthFeedMediaPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.FULL_WIDTH_FEED_MEDIA
-            ));
+                    Settings.FULL_WIDTH_FEED_MEDIA));
         }
 
         if (MediaViewerFadePatch.isPatchIncluded()) {
             addPreference(new NumberSettingPreference(
                     context,
-                    Settings.MEDIA_VIEWER_FADE
-            ));
+                    Settings.MEDIA_VIEWER_FADE));
         }
 
         if (KeepFeedPositionPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.KEEP_FEED_POSITION
-            ));
+                    Settings.KEEP_FEED_POSITION));
         }
 
         if (FeedMediaMaxHeightPatch.isPatchIncluded()) {
             addPreference(new NumberSettingPreference(
                     context,
-                    Settings.FEED_MEDIA_MAX_HEIGHT
-            ));
+                    Settings.FEED_MEDIA_MAX_HEIGHT));
         }
 
         if (HideMediaViewerComponentsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_JOIN_CONVERSATION_BUTTON
-            ));
+                    Settings.HIDE_JOIN_CONVERSATION_BUTTON));
 
             if (HideMediaViewerComponentsPatch.isHideOverlayIncluded()) {
                 addPreference(new BooleanSettingPreference(
                         context,
-                        Settings.HIDE_MEDIA_VIEWER_OVERLAY
-                ));
+                        Settings.HIDE_MEDIA_VIEWER_OVERLAY));
             }
         }
 
         if (MediaViewerBlackBackgroundPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.MEDIA_VIEWER_BLACK_BACKGROUND
-            ));
+                    Settings.MEDIA_VIEWER_BLACK_BACKGROUND));
         }
 
         if (FlipPostActionBarPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.FLIP_POST_ACTION_BAR
-            ));
+                    Settings.IMMERSIVE_MODE));
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
-            ));
+                    Settings.FLIP_POST_ACTION_BAR));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SWAP_POST_VOTE_COMMENT_BUTTONS));
         }
 
         if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.REMEMBER_COLLAPSED_COMMENTS
-            ));
+                    Settings.REMEMBER_COLLAPSED_COMMENTS));
         }
 
         Utils.setPreferenceTitlesToMultiLine(this);
@@ -223,8 +205,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         if (ShowFlairsInHomeFeedPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.SHOW_FLAIRS_IN_HOME_FEED
-            ));
+                    Settings.SHOW_FLAIRS_IN_HOME_FEED));
         }
     }
 }

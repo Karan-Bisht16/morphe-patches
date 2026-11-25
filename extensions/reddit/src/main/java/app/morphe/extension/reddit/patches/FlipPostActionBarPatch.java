@@ -21,16 +21,19 @@ public final class FlipPostActionBarPatch {
      */
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
-        return false;  // Modified during patching.
+        return false; // Modified during patching.
     }
 
     /**
      * Injection point.
      *
-     * @return If the vote buttons are moved into the comment row, next to the comment button.
+     * @return If the vote buttons are moved into the comment row, next to the
+     *         comment button.
      */
     public static boolean moveVoteButtons() {
-        return Settings.FLIP_POST_ACTION_BAR.get() || Settings.SWAP_POST_VOTE_COMMENT_BUTTONS.get();
+        return Settings.FLIP_POST_ACTION_BAR.get() ||
+                Settings.SWAP_POST_VOTE_COMMENT_BUTTONS.get() ||
+                Settings.IMMERSIVE_MODE.get();
     }
 
     /**
@@ -53,7 +56,8 @@ public final class FlipPostActionBarPatch {
 
     /**
      * Horizontal arrangement of the action bar rows.
-     * Implements the app's Compose Arrangement.Horizontal interface, added during patching.
+     * Implements the app's Compose Arrangement.Horizontal interface, added during
+     * patching.
      */
     public static final class RowArrangement {
         private static final RowArrangement BUTTONS_ROW = new RowArrangement(false);
@@ -99,7 +103,8 @@ public final class FlipPostActionBarPatch {
             int x = 0;
             if (Settings.FLIP_POST_ACTION_BAR.get()) {
                 x = totalSize - spacing * (count - 1);
-                for (int size : sizes) x -= size;
+                for (int size : sizes)
+                    x -= size;
             }
 
             final boolean swap = Settings.SWAP_POST_VOTE_COMMENT_BUTTONS.get();
@@ -121,20 +126,27 @@ public final class FlipPostActionBarPatch {
             int index = 0;
             if (Settings.FLIP_POST_ACTION_BAR.get()) {
                 // The other buttons, then both spacers, then the comment row.
-                for (int i = 3; i < count; i++) order[index++] = i;
+                for (int i = 3; i < count; i++)
+                    order[index++] = i;
                 order[index++] = 0;
-                if (count > 2) order[index++] = 2;
+                if (count > 2)
+                    order[index++] = 2;
                 order[index] = 1;
             } else {
                 // The comment row first, so the vote and comment buttons stay at the start.
                 order[index++] = 1;
                 for (int i = 0; i < count; i++) {
-                    if (i != 1) order[index++] = i;
+                    if (i != 1)
+                        order[index++] = i;
                 }
             }
 
             int x = 0;
             for (int i : order) {
+                if (Settings.IMMERSIVE_MODE.get() && i >= 3) {
+                    outPositions[i] = -9999;
+                    continue;
+                }
                 outPositions[i] = x;
                 x += sizes[i];
             }

@@ -44,6 +44,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
 
     <string name="morphe_screen_layout_title">Layout</string>
+    <string name="morphe_immersive_mode_title">Immersive mode</string>
+    <string name="morphe_immersive_mode_summary">Hides the share and repost buttons in the post action bar</string>
     <string name="morphe_copy_text_title">Copy text</string>
     <string name="morphe_copy_text_summary">Allows selecting and copying text in posts and comments. Disables collapsing comments</string>
     <string name="morphe_copy_text_user_dialog_message">Collapsing comments will stop working while Copy text is enabled</string>

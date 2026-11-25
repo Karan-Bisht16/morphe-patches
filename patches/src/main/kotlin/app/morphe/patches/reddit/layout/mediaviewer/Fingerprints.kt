@@ -244,3 +244,105 @@ internal val mediaViewerFadeAlphaLegacyFilter = methodCall(
     returnType = "J",
     opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
 )
+
+internal object CompositionViewModelOnEventFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/screen/presentation/CompositionViewModel;",
+    name = "onEvent",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;")
+)
+
+private const val FULL_BLEED_EVENT_TYPE =
+    "Lcom/reddit/fullbleedplayer/data/events/FullBleedEventType;"
+
+private fun fullBleedEventCtor(constant: String) = Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = FULL_BLEED_EVENT_TYPE,
+            name = constant
+        )
+    )
+)
+
+internal val OnClickRepostCtorFingerprint = fullBleedEventCtor("OnClickRepost")
+internal val OnClickShareCtorFingerprint = fullBleedEventCtor("OnClickShare")
+internal val DownloadPermCtorFingerprint = fullBleedEventCtor("Download_RequestPermissions")
+internal val ToggleSaveCtorFingerprint = fullBleedEventCtor("ToggleSavePost")
+
+internal object FullBleedViewModelGetCurrentMediaPageFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/fullbleedplayer/ui/FullBleedViewModel;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = { ToggleSaveCtorFingerprint.originalMethod.parameterTypes[0].toString() }
+)
+
+internal object IconTypeDownloadToIconFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/fullbleedplayer/composables/IconType$Download;",
+    name = "toIcon"
+)
+
+internal object IconTypeSaveToIconFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/fullbleedplayer/composables/IconType$Save;",
+    name = "toIcon"
+)
+
+internal object IconTypeUnsaveToIconFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/fullbleedplayer/composables/IconType$Unsave;",
+    name = "toIcon"
+)
+
+internal object MediaViewerActionIconsFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+    strings = listOf("mod_icon", "share_icon")
+)
+
+internal object MediaViewerActionButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        literal(1617340782)
+    )
+)
+
+internal object CompositionViewModelInitStateFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/screen/presentation/CompositionViewModel;",
+    name = "<init>",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = "Ljava/lang/Boolean;",
+            name = "FALSE"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "L",
+            location = MatchAfterWithin(6)
+        )
+    )
+)
+
+internal object OverflowMenuIsSavedFingerprint : Fingerprint(
+    returnType = "Ljava/util/List;",
+    parameters = listOf("L", "Ljava/lang/String;", "Z"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = { ToggleSaveCtorFingerprint.originalMethod.parameterTypes[0].toString() },
+            parameters = listOf(),
+            returnType = "Z"
+        ),
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = "Lcom/reddit/fullbleedplayer/composables/IconType;",
+            name = "Unsave",
+            location = MatchAfterWithin(6)
+        )
+    )
+)
+
