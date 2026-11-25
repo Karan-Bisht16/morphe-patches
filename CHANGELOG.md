@@ -1,3 +1,10 @@
+## [2.4.0](https://github.com/Karan-Bisht16/morphe-patches/compare/v2.3.0...v2.4.0) (2026-11-25)
+
+### ✨ New Features
+
+* add custom signing key ([ffb80ba](https://github.com/Karan-Bisht16/morphe-patches/commit/ffb80baa2c3a3d89733c641cb02ba4d4822c0096))
+* **reddit:** add immersive mode with media viewer download and save ([e2f2b24](https://github.com/Karan-Bisht16/morphe-patches/commit/e2f2b24639ed5c31d42142f554492893656b97e3))
+
 ## 1.0.0 (2026-11-25)
 
 ### ⚠ BREAKING CHANGES
