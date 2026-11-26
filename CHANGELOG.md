@@ -1,3 +1,9 @@
+## [2.5.1](https://github.com/Karan-Bisht16/morphe-patches/compare/v2.5.0...v2.5.1) (2026-11-26)
+
+### 🐛 Bug Fixes
+
+* **ci:** remove upstream website deploy and FCM steps from fork workflow ([87be843](https://github.com/Karan-Bisht16/morphe-patches/commit/87be843db5941560d043130a8f8b3e2021c5e2cf))
+
 ## [2.5.0](https://github.com/Karan-Bisht16/morphe-patches/compare/v2.4.0...v2.5.0) (2026-11-26)
 
 ### ✨ New Features
